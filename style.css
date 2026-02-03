@@ -1,0 +1,56 @@
+body {
+    background: #222;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.card {
+    width: 360px;
+    border: 2px solid #ccc;
+    color: white;
+    background: #2b2b2b;
+}
+
+.row {
+    border-bottom: 1px solid #555;
+    padding: 14px;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 6px;
+    border: none;
+    outline: none;
+    background: #333;
+    color: white;
+}
+
+textarea {
+    height: 90px;
+    resize: none;
+}
+
+.locations {
+    text-align: center;
+    line-height: 1.8;
+}
