@@ -30,6 +30,7 @@ body {
     font-weight: bold;
 }
 
+
 label {
     display: block;
     margin-bottom: 6px;
@@ -100,6 +101,12 @@ textarea {
 
 /* Make labels clickable and tidy */
 .radio-group label {
+    display: flex;
+    /* puts radio + text side-by-side */
+    align-items: center;
+    /* vertically centers them */
+    gap: 8px;
+    /* space between circle and text */
     cursor: pointer;
 }
 
