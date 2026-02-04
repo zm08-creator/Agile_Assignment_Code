@@ -54,3 +54,56 @@ textarea {
     text-align: center;
     line-height: 1.8;
 }
+
+/* Button container */
+.button-row {
+    text-align: center;
+    border-bottom: none;
+    padding: 20px;
+}
+
+/* Next button */
+.next-btn {
+    width: 80%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    background-color: #3f5fa8;
+    color: white;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.next-btn:hover {
+    background-color: #4e73c7;
+}
+
+/* Location row layout (label left, options right) */
+.location-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Left label */
+.location-label {
+    min-width: 90px;
+}
+
+/* Stack radio buttons vertically */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Make labels clickable and tidy */
+.radio-group label {
+    cursor: pointer;
+}
+
+/* Slight spacing for the radio circle */
+.radio-group input {
+    margin-right: 6px;
+}

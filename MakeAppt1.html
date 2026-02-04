@@ -1,47 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Health Matters</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
 
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Health Matters</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<div class="card">
+    <body>
 
-    <div class="row title">
-        Health Matters
-    </div>
+        <div class="card">
 
-    <div class="row">
-        <label for="name">Name:</label>
-        <input id="name" type="text">
-    </div>
+            <div class="row title">
+                Health Matters
+            </div>
 
-    <div class="row">
-        <label for="dob">DOB:</label>
-        <input id="dob" type="date">
-    </div>
+            <div class="row">
+                <label for="name">Name:</label>
+                <input id="name" type="text">
+            </div>
 
-    <div class="row">
-        <label for="address">Address:</label>
-        <input id="address" type="text">
-    </div>
+            <div class="row">
+                <label for="dob">DOB:</label>
+                <input id="dob" type="date">
+            </div>
 
-    <div class="row locations">
-        <p>Location:</p>
-        <p>Preston</p>
-        <p>Burnley</p>
-        <p>West Lakes</p>
-    </div>
+            <div class="row">
+                <label for="address">Address:</label>
+                <input id="address" type="text">
+            </div>
 
-    <div class="row">
-        <label for="discussion">What would you like to discuss?</label>
-        <textarea id="discussion"></textarea>
-    </div>
+            <div class="row location-row">
 
-</div>
+                <span class="location-label">Location:</span>
 
-</body>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="location" value="Preston">
+                        Preston
+                    </label>
+
+                    <label>
+                        <input type="radio" name="location" value="Burnley">
+                        Burnley
+                    </label>
+
+                    <label>
+                        <input type="radio" name="location" value="West Lakes">
+                        West Lakes
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <label for="discussion">What would you like to discuss?</label>
+                <textarea id="discussion"></textarea>
+            </div>
+
+            <div class="row button-row">
+                <button class="next-btn">Next</button>
+            </div>
+
+        </div>
+
+    </body>
+
 </html>
