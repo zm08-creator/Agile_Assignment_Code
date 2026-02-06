@@ -1,126 +1,80 @@
 body {
-    background: white;
-    /* was #222 */
-    color: black;
-    /* add this */
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #e6f0ff;
+    /* light blue */
     margin: 0;
+    padding: 0;
 }
 
-
-.card {
-    width: 360px;
-    border: 2px solid #ccc;
-    color: black;
-    /* was white */
-    background: white;
-    /* was #2b2b2b */
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    /* white */
+    border-radius: 8px;
+    padding: 20px 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.row {
-    border-bottom: 1px solid #ccc;
-    /* lighter line for white bg */
-    padding: 14px;
-}
-
-.row:last-child {
-    border-bottom: none;
-}
-
-.title {
+h1 {
     text-align: center;
-    font-size: 20px;
-    font-weight: bold;
+    color: #0057b7;
+    /* deep blue */
+    margin-bottom: 20px;
 }
 
+.form-group {
+    margin-bottom: 15px;
+}
 
 label {
     display: block;
     margin-bottom: 6px;
+    color: #003366;
+    font-weight: bold;
 }
 
-input,
+input[type="text"],
+input[type="date"],
 textarea {
     width: 100%;
-    padding: 6px;
-    border: 1px solid #ccc;
-    /* add border so they’re visible on white */
-    outline: none;
-    background: white;
-    /* was #333 */
-    color: black;
-    /* was white */
+    padding: 8px;
+    border: 1px solid #99b3ff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
 textarea {
-    height: 90px;
-    resize: none;
+    resize: vertical;
 }
 
-.locations {
-    text-align: center;
-    line-height: 1.8;
+.form-group span {
+    display: block;
+    margin-bottom: 6px;
+    color: #003366;
+    font-weight: bold;
 }
 
-/* Button container */
-.button-row {
-    text-align: center;
-    border-bottom: none;
-    padding: 20px;
+.form-group label input[type="radio"] {
+    margin-right: 4px;
 }
 
-/* Next button */
-.next-btn {
-    width: 80%;
-    padding: 12px;
-    font-size: 18px;
-    border-radius: 6px;
+.form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #0057b7;
+    color: #ffffff;
     border: none;
-    background-color: #3f5fa8;
-    color: white;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-size: 14px;
     cursor: pointer;
 }
 
-/* Hover effect */
-.next-btn:hover {
-    background-color: #4e73c7;
-}
-
-/* Location row layout (label left, options right) */
-.location-row {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-}
-
-/* Left label */
-.location-label {
-    min-width: 90px;
-}
-
-/* Stack radio buttons vertically */
-.radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-/* Make labels clickable and tidy */
-.radio-group label {
-    display: flex;
-    /* puts radio + text side-by-side */
-    align-items: center;
-    /* vertically centers them */
-    gap: 8px;
-    /* space between circle and text */
-    cursor: pointer;
-}
-
-/* Slight spacing for the radio circle */
-.radio-group input {
-    margin-right: 6px;
+button:hover {
+    background-color: #004099;
 }
