@@ -6,3 +6,5 @@ MakeApp1 is a page that will ask the user for their details like name, address, 
 MakeAppt2 is to choose a date for an appointment
 
 MakeAppt3 is to choose a time slot for the user's appointment
+
+MakeAppt4 is a confirmation page
