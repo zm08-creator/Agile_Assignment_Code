@@ -23,7 +23,7 @@ if (isset($_SESSION['user_id'])) {
         
         <div class="countdown" id="countdown">Redirecting in <span id="timer">5</span> seconds...</div>
         
-        <a href="login.php" class="login-btn" id="loginBtn">Go to Login →</a>
+        <a href="Login.php" class="login-btn" id="loginBtn">Go to Login →</a>
     </div>
 
     <script>
@@ -37,13 +37,13 @@ if (isset($_SESSION['user_id'])) {
             
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                window.location.href = 'login.php';
+                window.location.href = 'Login.php';
             }
         }, 1000);
 
         loginBtn.addEventListener('click', () => {
             clearInterval(countdown);
-            window.location.href = 'login.php';
+            window.location.href = 'Login.php';
         });
     </script>
 </body>
