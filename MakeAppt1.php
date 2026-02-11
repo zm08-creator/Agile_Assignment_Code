@@ -11,7 +11,7 @@
         <div class="container">
             <h1>Health Matters</h1>
 
-            <form action="MakeAppt2.html" method="get">
+            <form action="MakeAppt2.php" method="get">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>

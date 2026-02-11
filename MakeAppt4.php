@@ -43,7 +43,7 @@
 
 
                 <div class="form-actions" style="margin-top: 30px;">
-                    <a href="MakeAppt1.html" class="btn-back">Book Another Appointment</a>
+                    <a href="MakeAppt1.php" class="btn-back">Book Another Appointment</a>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
         <div class="container">
             <h1>Health Matters</h1>
 
-            <form action="MakeAppt3.html" method="get">
+            <form action="MakeAppt3.php" method="get">
                 <div class="form-group">
                     <label for="appt-date">Preferred appointment date:</label>
                     <input type="date" id="appt-date" name="appt-date" required>

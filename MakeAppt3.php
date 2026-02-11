@@ -11,7 +11,7 @@
         <div class="container">
             <h1>Health Matters</h1>
 
-            <form action="MakeAppt4.html" method="get">
+            <form action="MakeAppt4.php" method="get">
                 <div class="form-group">
                     <label>Choose your preferred time slot:</label>
 
