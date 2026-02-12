@@ -53,7 +53,7 @@
                 // Later: send data to backend
 
                 // Redirect to MakeAppt1.html after successful login
-                window.location.href = "MakeAppt1.html";
+                window.location.href = "MakeAppt1.php";
             }
         </script>
     </body>
