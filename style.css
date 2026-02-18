@@ -1,13 +1,15 @@
-/* Reset and base styles */
+/* Reset */
 * {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #e6f0ff 0%, #f4f6f8 100%);
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page background */
+body {
+    background-color: #f4f9fb; /* soft white-blue */
+    color: #156082;
     min-height: 100vh;
 }
 
@@ -15,258 +17,105 @@ body {
 .container,
 .login-container {
     max-width: 600px;
-    width: 90%;
-    margin: 40px auto;
-    background: #ffffff;
+    margin: 60px auto;
+    background-color: #ffffff;
+    padding: 30px 40px;
     border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.login-container {
-    max-width: 350px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 70vh;
+    box-shadow: 0 4px 12px rgba(21, 96, 130, 0.15);
 }
 
 /* Headings */
-h1,
-h2 {
+h1, h2 {
     text-align: center;
-    color: #0057b7;
     margin-bottom: 25px;
-    font-weight: bold;
+    color: #156082;
 }
 
-/* Form elements */
+/* Form groups */
 .form-group {
     margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
-    color: #003366;
-    font-weight: 600;
+    margin-bottom: 6px;
+    font-weight: bold;
 }
 
+/* Inputs */
 input[type="text"],
-input[type="date"],
 input[type="password"],
-select,
-textarea {
+input[type="date"],
+textarea,
+select {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #99b3ff;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
+    padding: 10px;
+    border: 1px solid #156082;
+    border-radius: 5px;
+    font-size: 15px;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border-color: #0057b7;
+/* Radio buttons */
+.time-slot,
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
 }
 
-/* Textarea specific */
-textarea {
-    resize: vertical;
-    min-height: 100px;
+input[type="radio"] {
+    margin-right: 8px;
 }
 
-/* Buttons - consistent across all pages */
+/* Buttons */
 button,
 .btn-back {
-    background: linear-gradient(135deg, #0057b7 0%, #004099 100%);
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    background-color: #156082;
     color: #ffffff;
     border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    text-align: center;
     text-decoration: none;
-    display: inline-block;
 }
 
 button:hover,
 .btn-back:hover {
-    background: linear-gradient(135deg, #004099 0%, #003366 100%);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 87, 183, 0.3);
+    background-color: #0f4a63;
 }
 
-/* Full width buttons */
-button.full-width,
-.btn-back.full-width {
-    width: 100%;
-}
-
-/* Time slots */
-.time-slot {
-    display: block;
-    margin-bottom: 12px;
-    padding: 15px;
-    background: #f0f7ff;
-    border: 2px solid #99b3ff;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.time-slot:hover {
-    background: #e6f0ff;
-    border-color: #0057b7;
-    transform: translateY(-2px);
-}
-
-.time-slot input[type="radio"] {
-    margin-right: 10px;
-    width: auto;
-}
-
-.time-slot label {
-    display: contents;
-}
-
-/* Confirmation styling */
+/* Confirmation page */
 .confirmation {
     text-align: center;
-    padding: 30px;
-    background: linear-gradient(135deg, #e6f0ff 0%, #ffffff 100%);
-    border-radius: 8px;
-    border: 2px solid #99b3ff;
-    margin: 20px 0;
 }
 
-.confirmation h2 {
-    margin-bottom: 30px;
-}
-
-/* Details grid */
 .details-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 25px 0;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .detail-item {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid #0057b7;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: #f0f7fa;
+    padding: 12px;
+    border-radius: 5px;
+    border-left: 5px solid #156082;
 }
 
-.detail-item strong {
-    color: #003366;
-    display: block;
-    margin-bottom: 8px;
-    font-size: 16px;
-}
-
-.detail-item.full-width {
-    grid-column: 1 / -1;
-}
-
-/* Form actions */
+/* Actions */
 .form-actions {
-    text-align: right;
     margin-top: 25px;
 }
 
-/* Login specific */
-.credentials {
-    display: none;
-}
-
-#credentials {
-    display: none;
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-
-    .container,
-    .login-container {
-        margin: 20px 15px;
-        padding: 20px;
-    }
-
-    .details-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .detail-item.full-width {
-        grid-column: 1;
-    }
-
-    button,
-    .btn-back {
-        padding: 14px 20px;
-        font-size: 16px;
-    }
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+/* Errors */
+.error {
+    color: #c0392b;
     text-align: center;
-}
-
-.welcome-container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    max-width: 500px;
-}
-
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-}
-
-.countdown {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #ffd700;
-    margin-bottom: 20px;
-}
-
-.login-btn {
-    background: #4CAF50;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.3s;
-}
-
-.login-btn:hover {
-    background: #45a049;
+    margin-bottom: 15px;
 }
