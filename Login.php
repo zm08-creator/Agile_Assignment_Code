@@ -1,59 +1,59 @@
 <?php
 session_start();
+require_once "config/db.php";
 
 $error = "";
 
-// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     $role = $_POST["role"] ?? "";
-    $username = $_POST["username"] ?? "";
-    $password = $_POST["password"] ?? "";
+    $username = trim($_POST["username"] ?? "");
+    $password = trim($_POST["password"] ?? "");
 
     if ($role === "" || $username === "" || $password === "") {
         $error = "Please select a role and enter username and password.";
     } else {
-        // Store data in session (for now – no database yet)
-        $_SESSION["role"] = $role;
-        $_SESSION["username"] = $username;
 
-        // Redirect after successful login
-        header("Location: MakeAppt1.php");
-        exit;
+        // Check user in database
+        $stmt = $conn->prepare("SELECT id, password_hash FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows === 1) {
+
+            $stmt->bind_result($id, $password_hash);
+            $stmt->fetch();
+
+            if (password_verify($password, $password_hash)) {
+
+                // Role check for demo purposes
+                if (
+                    ($username === "patient" && $role === "patient") ||
+                    ($username === "professional" && $role === "practitioner") ||
+                    ($username === "admin" && $role === "admin")
+                ) {
+
+                    $_SESSION["user_id"] = $id;
+                    $_SESSION["username"] = $username;
+                    $_SESSION["role"] = $role;
+
+                    header("Location: MakeAppt1.php");
+                    exit;
+
+                } else {
+                    $error = "Selected role does not match user.";
+                }
+
+            } else {
+                $error = "Invalid password.";
+            }
+
+        } else {
+            $error = "User not found.";
+        }
+
+        $stmt->close();
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Health Matters</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-<div class="login-container">
-    <h2>Login</h2>
-
-    <?php if ($error): ?>
-        <p style="color:red;"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
-
-    <form method="post" action="">
-        <label for="role">Select Role</label>
-        <select id="role" name="role" required>
-            <option value="">-- Choose Role --</option>
-            <option value="practitioner">Practitioner</option>
-            <option value="referring_manager">Referring Manager</option>
-            <option value="patient">Patient</option>
-            <option value="admin">Admin</option>
-        </select>
-
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-
-        <button type="submit">Login</button>
-    </form>
-</div>
-</body>
-</html>
