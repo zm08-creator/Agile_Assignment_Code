@@ -1,26 +1,12 @@
 <?php
-session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Get data from session (with fallbacks)
-$name     = $_SESSION["userName"]     ?? "Not provided";
-$location = $_SESSION["userLocation"] ?? "Not provided";
-$date     = $_SESSION["apptDate"]     ?? "Not provided";
-$time     = $_SESSION["apptTime"]     ?? "Not provided";
-
-// Format location nicely
-$locationFormatted = ucwords(str_replace("-", " ", $location));
-
-// Generate reference number
-$yearShort = date("y");
-$month = date("m");
-$day = date("d");
-
-$letters = "ABCDEFGHJKMNPQRSTUVWXYZ";
-$refNumber =
-    "HM" .<?php
 session_start();
 require_once "config/db.php";
 
+// Ensure previous steps completed
 if (!isset($_SESSION["appointment"])) {
     header("Location: MakeAppt1.php");
     exit;
@@ -28,16 +14,17 @@ if (!isset($_SESSION["appointment"])) {
 
 $appt = $_SESSION["appointment"];
 
-$name       = $appt["name"];
-$dob        = $appt["dob"];
-$address    = $appt["address"];
-$location   = $appt["location"];
-$discussion = $appt["discussion"];
-$date       = $appt["appt_date"];
-$time       = $appt["appt_time"];
+$name       = $appt["name"]        ?? "";
+$dob        = $appt["dob"]         ?? "";
+$address    = $appt["address"]     ?? "";
+$location   = $appt["location"]    ?? "";
+$discussion = $appt["discussion"]  ?? "";
+$date       = $appt["appt_date"]   ?? "";
+$time       = $appt["appt_time"]   ?? "";
 
 $locationFormatted = ucwords(str_replace("-", " ", $location));
 
+// Generate reference number
 $yearShort = date("y");
 $month = date("m");
 $day = date("d");
@@ -53,38 +40,33 @@ $refNumber =
     random_int(100, 999);
 
 // Insert into database
-$userId = $_SESSION["user_id"];
+$userId = $_SESSION["user_id"] ?? null;
 
-$stmt = $conn->prepare("
-    INSERT INTO appointments 
-    (user_id, full_name, dob, address, location, discussion, appointment_date, appointment_time)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-");
+if ($userId !== null) {
+    $stmt = $conn->prepare("
+        INSERT INTO appointments 
+        (user_id, full_name, dob, address, location, discussion, appointment_date, appointment_time)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ");
 
-$stmt->bind_param(
-    "isssssss",
-    $userId,
-    $name,
-    $dob,
-    $address,
-    $location,
-    $discussion,
-    $date,
-    $time
-);
+    $stmt->bind_param(
+        "isssssss",
+        $userId,
+        $name,
+        $dob,
+        $address,
+        $location,
+        $discussion,
+        $date,
+        $time
+    );
 
-$stmt->execute();
-$stmt->close();
+    $stmt->execute();
+    $stmt->close();
+}
 
-// Clear session appointment data
+// Clear appointment data so refresh doesn’t re‑insert
 unset($_SESSION["appointment"]);
-?>
-    $yearShort .
-    $month .
-    $day .
-    $letters[random_int(0, strlen($letters) - 1)] .
-    $letters[random_int(0, strlen($letters) - 1)] .
-    random_int(100, 999);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,8 +90,23 @@ unset($_SESSION["appointment"]);
             </div>
 
             <div class="detail-item">
+                <strong>Date of Birth:</strong>
+                <span><?= htmlspecialchars($dob) ?></span>
+            </div>
+
+            <div class="detail-item">
+                <strong>Address:</strong>
+                <span><?= htmlspecialchars($address) ?></span>
+            </div>
+
+            <div class="detail-item">
                 <strong>Location:</strong>
                 <span><?= htmlspecialchars($locationFormatted) ?></span>
+            </div>
+
+            <div class="detail-item">
+                <strong>What you want to discuss:</strong>
+                <span><?= htmlspecialchars($discussion) ?></span>
             </div>
 
             <div class="detail-item">
@@ -125,7 +122,7 @@ unset($_SESSION["appointment"]);
 
         <div class="detail-item" style="grid-column: 1 / -1;">
             <strong>Reference Number:</strong>
-            <span><?= $refNumber ?></span>
+            <span><?= htmlspecialchars($refNumber) ?></span>
         </div>
 
         <div class="form-actions" style="margin-top: 30px;">
